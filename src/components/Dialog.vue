@@ -15,7 +15,7 @@
           Enter a number of how many people you want to add to the list.
         </p>
         <input type="number" class="form-container__control" :class="{ 'input-error': validationError.show }"
-            v-model="numberOfPeople" @keyup="validationError = validateInput($event.target.value)"/>
+            v-model="userCount" @keyup="validationError = validateInput($event.target.value)"/>
 
         <p v-if="validationError.show" class="error-message">
           {{ validationError.message }}
@@ -43,7 +43,7 @@ export default {
   name: "Dialog",
   mixins: [validationMixin],
   data: () => ({
-    numberOfPeople: null,
+    userCount: null,
     validationError: {
       show: false,
       message: null,
@@ -65,15 +65,15 @@ export default {
   },
   methods: {
     submit() {
-      if (this.numberOfPeople === null || this.numberOfPeople === "") {
+      if (this.userCount === null || this.userCount === "") {
         this.validationError = this.constructValidationObj(true, "This field is required");
         return;
       }
-      this.$emit("peopleCount", this.numberOfPeople);
+      this.$emit("userCount", this.userCount);
       this.closeDialog();
     },
     resetData() {
-      this.numberOfPeople = null;
+      this.userCount = null;
       this.validationError = { show: false, message: null };
     },
     closeDialog() {
