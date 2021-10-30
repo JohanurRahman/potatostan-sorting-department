@@ -1,0 +1,40 @@
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 20px 20px;
+
+  &__title {
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    font-weight: bold;
+  }
+
+  &__icon {
+    color: #999;
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+
+.dialog-content {
+  padding: 19px 20px 49px;
+  &__title {
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: end;
+  padding: 20px;
+}
+
+.dialog-divider {
+  &.theme--light.v-divider {
+    border-color: #ccc;
+  }
+}
