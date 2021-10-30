@@ -2,7 +2,7 @@
   <v-dialog v-model="show" max-width="540">
     <v-card>
       <div class="card-container">
-        <button class="card-container__icon">
+        <button class="card-container__icon" @click.stop="show = false">
           <v-icon> mdi-close </v-icon>
         </button>
         <img class="mb-5" src="../assets/successful_check.svg" width="60" alt="">
