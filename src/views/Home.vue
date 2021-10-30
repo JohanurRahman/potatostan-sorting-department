@@ -1,5 +1,10 @@
 <template>
   <div id="home" class="home-container">
+    <div class="d-flex justify-end mb-9">
+      <v-btn class="button-sorting" v-ripple="false" @click.stop="showDialog = true">
+        Start Sorting!
+      </v-btn>
+    </div>
     <h3>asdsad</h3>
   </div>
 </template>
@@ -10,7 +15,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../scss/button';
+
 .home-container {
   max-width: 1140px;
   width: 100%;
