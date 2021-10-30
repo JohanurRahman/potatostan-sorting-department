@@ -8,7 +8,8 @@
     <Dialog v-model="showDialog" @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
-      <div class="card__header">
+      <div class="card__header" :class="{'justify-end': !user.length }">
+        <Stopwatch v-if="user.length" />
         <h3> {{ user.length }} people in the list </h3>
       </div>
       <template v-if="user.length">
@@ -27,11 +28,13 @@
 import Dialog from "../components/Dialog";
 import Table from "../components/Table";
 import randomUserGeneratorMixin from "../mixins/randomUserGeneratorMixin";
+import Stopwatch from "../components/Stopwatch";
 
 export default {
   name: 'Home',
   mixins: [randomUserGeneratorMixin],
   components: {
+    Stopwatch,
     Table,
     Dialog,
   },
@@ -61,7 +64,8 @@ export default {
   &__header {
     padding: 30px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     h3 {
       line-height: 16px;
       font-size: 14px;
