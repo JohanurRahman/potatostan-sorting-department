@@ -1,0 +1,33 @@
+.button {
+  &.theme--light.v-btn.v-btn--has-bg {
+    height: 40px;
+    box-shadow: none;
+    border-radius: 5px;
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+  .v-btn__content {
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+}
+.button--grey {
+  &.theme--light.v-btn.v-btn--has-bg {
+    width: 88px;
+    background-color: #eee;
+  }
+  .v-btn__content {
+    color: #555;
+  }
+}
+.button--color {
+  &.theme--light.v-btn.v-btn--has-bg {
+    width: 78px;
+    background-color: #ff8d00;
+  }
+  .v-btn__content {
+    color: #fff;
+  }
+}
