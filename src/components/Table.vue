@@ -1,8 +1,8 @@
 <template>
   <v-data-table height="500" :headers="headers"
-                :items="user" :disable-pagination="true"
+                :items="users" :disable-pagination="true"
                 :hide-default-footer="true">
-    <template v-slot:body="props">
+    <template v-if="draggable" v-slot:body="props">
       <draggable :list="props.items" tag="tbody" @end="areUsersSorted(props.items)">
         <tr v-for="(user, index) in props.items" :key="index">
           <td>{{ user.email }}</td>
@@ -23,10 +23,13 @@ export default {
     Draggable,
   },
   props: {
-    user: {
+    users: {
       default: [],
       required: true,
     },
+    draggable: {
+      default: true
+    }
   },
   data: () => ({
     headers: [

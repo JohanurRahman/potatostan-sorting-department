@@ -9,18 +9,22 @@
     <SuccessfulDialog v-model="showSuccessfulDialog" @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
+      
       <div class="card__header">
         <Timer ref="timer" />
-        <h3> {{ user.length }} people in the list </h3>
+        <h3> {{ users.length }} people in the list </h3>
       </div>
-      <template v-if="user.length">
-        <Table :user="user" @usersSorted="generateScore" />
+
+      <template v-if="users.length">
+        <Table :users="users" :draggable="draggable" @usersSorted="generateScore" />
       </template>
+
       <template v-else>
         <div class="card__no-records">
           <h2>Click 'Start Sorting' to generate data</h2>
         </div>
       </template>
+
     </v-card>
   </div>
 </template>
@@ -45,15 +49,18 @@ export default {
     startTimer: false,
     showDialog: false,
     showSuccessfulDialog: false,
-    user: [],
+    draggable: true, // Top stop the dragging row once sorting is complete
+    users: [],
   }),
   methods: {
     generateRandomUser(userCount) {
-      this.user = this.randomUsers(parseInt(userCount));
+      this.users = this.randomUsers(parseInt(userCount));
       this.$refs.timer.start();
     },
     generateScore() {
+      this.draggable = false;
       this.$refs.timer.stop();
+      this.showSuccessfulDialog = true;
     }
   },
 }
