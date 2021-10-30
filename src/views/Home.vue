@@ -5,28 +5,43 @@
         Start Sorting!
       </v-btn>
     </div>
-    <Dialog v-model="showDialog" @peopleCount="submittedPeopleCount($event)"></Dialog>
+    <Dialog v-model="showDialog" @userCount="generateRandomUser($event)" />
+
+    <v-card class="card" elevation="3" outlined>
+      <div class="card__header">
+        <h3> {{ user.length }} people in the list </h3>
+      </div>
+      <template v-if="user.length">
+        <Table :user="user" />
+      </template>
+      <template v-else>
+        <div class="card__no-records">
+          <h2>Click 'Start Sorting' to generate data</h2>
+        </div>
+      </template>
+    </v-card>
   </div>
 </template>
 
 <script>
 import Dialog from "../components/Dialog";
+import Table from "../components/Table";
+import randomUserGeneratorMixin from "../mixins/randomUserGeneratorMixin";
 
 export default {
   name: 'Home',
+  mixins: [randomUserGeneratorMixin],
   components: {
+    Table,
     Dialog,
   },
   data: () => ({
     showDialog: false,
-    randomData: [],
+    user: [],
   }),
   methods: {
-    submittedPeopleCount(value) {
-      // this.randomData = this.randomUsers(parseInt(value));
-      // if (this.randomData.length > 0) {
-      //   this.$refs.stopwatch.start();
-      // }
+    generateRandomUser(userCount) {
+      this.user = this.randomUsers(parseInt(userCount));
     },
   },
 }
@@ -40,5 +55,29 @@ export default {
   width: 100%;
   margin: 0 auto;
   padding: 100px 0;
+}
+
+.card {
+  &__header {
+    padding: 30px;
+    display: flex;
+    justify-content: flex-end;
+    h3 {
+      line-height: 16px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+  &__no-records {
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    h2 {
+      font-weight: 500;
+      color: rgba(10, 15, 20, 0.75);
+    }
+  }
 }
 </style>
