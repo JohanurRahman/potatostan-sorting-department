@@ -66,13 +66,10 @@ export default {
   methods: {
     submit() {
       if (this.numberOfPeople === null || this.numberOfPeople === "") {
-        this.validationError = this.constructValidationObj(
-            true,
-            "This field is required"
-        );
+        this.validationError = this.constructValidationObj(true, "This field is required");
         return;
       }
-      this.$emit("submit", this.numberOfPeople);
+      this.$emit("peopleCount", this.numberOfPeople);
       this.closeDialog();
     },
     resetData() {
