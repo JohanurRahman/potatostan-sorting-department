@@ -6,6 +6,7 @@
       </v-btn>
     </div>
     <Dialog v-model="showDialog" @userCount="generateRandomUser($event)" />
+    <SuccessfulDialog v-model="showSuccessfulDialog" @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
       <div class="card__header">
@@ -29,11 +30,13 @@ import Dialog from "../components/Dialog";
 import Table from "../components/Table";
 import randomUserGeneratorMixin from "../mixins/randomUserGeneratorMixin";
 import Timer from "../components/Timer";
+import SuccessfulDialog from "../components/SuccessfulDialog";
 
 export default {
   name: 'Home',
   mixins: [randomUserGeneratorMixin],
   components: {
+    SuccessfulDialog,
     Timer,
     Table,
     Dialog,
@@ -41,15 +44,17 @@ export default {
   data: () => ({
     startTimer: false,
     showDialog: false,
+    showSuccessfulDialog: false,
     user: [],
   }),
   methods: {
     generateRandomUser(userCount) {
-      this.user = this.randomUsers(parseInt(userCount));
-      this.$refs.timer.start();
+      this.showSuccessfulDialog = true;
+      // this.user = this.randomUsers(parseInt(userCount));
+      // this.$refs.timer.start();
     },
     generateScore() {
-      this.$refs.timer.stop();
+      // this.$refs.timer.stop();
     }
   },
 }
