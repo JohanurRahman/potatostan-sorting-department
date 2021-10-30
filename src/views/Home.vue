@@ -9,7 +9,7 @@
     <SuccessfulDialog v-model="showSuccessfulDialog" @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
-      
+
       <div class="card__header">
         <Timer ref="timer" />
         <h3> {{ users.length }} people in the list </h3>

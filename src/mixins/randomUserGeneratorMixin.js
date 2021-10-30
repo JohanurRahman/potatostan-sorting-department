@@ -1,7 +1,7 @@
 export default {
     methods: {
         randomNumber() {
-            return Math.floor(Math.random() * 100);
+            return Math.floor(Math.random() * 500);
         },
 
         randomStr() {
@@ -23,15 +23,11 @@ export default {
             return str.charAt(0).toUpperCase() + str.substring(1);
         },
 
-        randomPotatoes() {
-            return this.randomNumber();
-        },
-
         randomUsers(totalUsers) {
             return Array.from(Array(totalUsers), () => ({
                 name: this.randomName(),
                 email: this.randomMail(),
-                potatoes: this.randomPotatoes(),
+                potatoes: this.randomNumber(),
             }));
         },
     },
