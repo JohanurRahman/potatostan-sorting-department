@@ -21,16 +21,17 @@ export default {
   },
   methods: {
     start() {
+      this.elapsedTime = 0;
+      if (this.timer) {
+        this.stop();
+      }
       this.timer = setInterval(() => {
         this.elapsedTime += 1000;
       }, 1000);
     },
     stop() {
       clearInterval(this.timer);
-    },
-    reset() {
-      this.elapsedTime = 0;
-    },
+    }
   },
 }
 </script>

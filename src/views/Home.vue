@@ -8,8 +8,8 @@
     <Dialog v-model="showDialog" @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
-      <div class="card__header" :class="{'justify-end': !user.length }">
-        <Timer ref="timer" v-if="user.length" />
+      <div class="card__header">
+        <Timer ref="timer" />
         <h3> {{ user.length }} people in the list </h3>
       </div>
       <template v-if="user.length">
@@ -39,15 +39,14 @@ export default {
     Dialog,
   },
   data: () => ({
+    startTimer: false,
     showDialog: false,
     user: [],
   }),
   methods: {
     generateRandomUser(userCount) {
       this.user = this.randomUsers(parseInt(userCount));
-      if (this.user.length) {
-        this.$refs.timer.start();
-      }
+      this.$refs.timer.start();
     },
   },
 }
