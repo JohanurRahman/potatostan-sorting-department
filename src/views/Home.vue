@@ -9,7 +9,7 @@
 
     <v-card class="card" elevation="3" outlined>
       <div class="card__header" :class="{'justify-end': !user.length }">
-        <Stopwatch v-if="user.length" />
+        <Timer ref="timer" v-if="user.length" />
         <h3> {{ user.length }} people in the list </h3>
       </div>
       <template v-if="user.length">
@@ -28,13 +28,13 @@
 import Dialog from "../components/Dialog";
 import Table from "../components/Table";
 import randomUserGeneratorMixin from "../mixins/randomUserGeneratorMixin";
-import Stopwatch from "../components/Stopwatch";
+import Timer from "../components/Timer";
 
 export default {
   name: 'Home',
   mixins: [randomUserGeneratorMixin],
   components: {
-    Stopwatch,
+    Timer,
     Table,
     Dialog,
   },
@@ -45,6 +45,9 @@ export default {
   methods: {
     generateRandomUser(userCount) {
       this.user = this.randomUsers(parseInt(userCount));
+      if (this.user.length) {
+        this.$refs.timer.start();
+      }
     },
   },
 }

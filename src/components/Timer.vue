@@ -1,12 +1,12 @@
 <template>
-  <div id="stopwatch">
-    <p class="timer">{{ formattedElapsedTime }}</p>
+  <div id="Timer">
+    <p class="timer-title">{{ formattedElapsedTime }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Stopwatch",
+  name: "Timer",
   data: () => ({
     elapsedTime: 0,
     timer: undefined
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-.timer {
+.timer-title {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 0;
