@@ -49,12 +49,11 @@ export default {
   }),
   methods: {
     generateRandomUser(userCount) {
-      this.showSuccessfulDialog = true;
-      // this.user = this.randomUsers(parseInt(userCount));
-      // this.$refs.timer.start();
+      this.user = this.randomUsers(parseInt(userCount));
+      this.$refs.timer.start();
     },
     generateScore() {
-      // this.$refs.timer.stop();
+      this.$refs.timer.stop();
     }
   },
 }
