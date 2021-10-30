@@ -3,7 +3,7 @@
                 :items="user" :disable-pagination="true"
                 :hide-default-footer="true">
     <template v-slot:body="props">
-      <draggable :list="props.items" tag="tbody">
+      <draggable :list="props.items" tag="tbody" @end="areUsersSorted(props.items)">
         <tr v-for="(user, index) in props.items" :key="index">
           <td>{{ user.email }}</td>
           <td>{{ user.potatoes }}</td>
@@ -34,6 +34,15 @@ export default {
       { text: "Potatoes", value: "potatoes", sortable: false },
       { text: "Name", value: "name", sortable: false },
     ],
-  })
+  }),
+  methods: {
+    areUsersSorted (users) {
+      const sorted =  users.slice(1).every((item, i) => users[i].potatoes <= item.potatoes);
+      if (sorted) {
+        this.$emit('usersSorted');
+      }
+    }
+
+  }
 }
 </script>

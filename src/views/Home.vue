@@ -13,7 +13,7 @@
         <h3> {{ user.length }} people in the list </h3>
       </div>
       <template v-if="user.length">
-        <Table :user="user" />
+        <Table :user="user" @usersSorted="generateScore" />
       </template>
       <template v-else>
         <div class="card__no-records">
@@ -48,6 +48,9 @@ export default {
       this.user = this.randomUsers(parseInt(userCount));
       this.$refs.timer.start();
     },
+    generateScore() {
+      this.$refs.timer.stop();
+    }
   },
 }
 </script>
