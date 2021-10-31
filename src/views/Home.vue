@@ -6,7 +6,8 @@
       </v-btn>
     </div>
     <Dialog v-model="showDialog" @userCount="generateRandomUser($event)" />
-    <SuccessfulDialog v-model="showSuccessfulDialog" @userCount="generateRandomUser($event)" />
+    <SuccessfulDialog v-model="showSuccessfulDialog" :score="score"
+                      @userCount="generateRandomUser($event)" />
 
     <v-card class="card" elevation="3" outlined>
 
@@ -35,10 +36,11 @@ import Table from "../components/Table";
 import randomUserGeneratorMixin from "../mixins/randomUserGeneratorMixin";
 import Timer from "../components/Timer";
 import SuccessfulDialog from "../components/SuccessfulDialog";
+import scoreMixin from "../mixins/scoreMixin";
 
 export default {
   name: 'Home',
-  mixins: [randomUserGeneratorMixin],
+  mixins: [randomUserGeneratorMixin, scoreMixin],
   components: {
     SuccessfulDialog,
     Timer,
@@ -50,6 +52,7 @@ export default {
     showDialog: false,
     showSuccessfulDialog: false,
     draggable: true, // Top stop the dragging row once sorting is complete
+    score: 0,
     users: [],
   }),
   methods: {
@@ -60,7 +63,9 @@ export default {
     generateScore() {
       this.draggable = false;
       this.$refs.timer.stop();
+      const completionTime = this.$refs.timer.formattedElapsedTime;
       this.showSuccessfulDialog = true;
+      this.score = this.calculateScore(this.users.length, completionTime);
     }
   },
 }
