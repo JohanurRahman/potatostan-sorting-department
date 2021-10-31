@@ -1,7 +1,19 @@
 export default {
+    data: () => ({
+        previousValue: null,
+        set: new Set()
+    }),
     methods: {
         randomNumber() {
-            return Math.floor(Math.random() * 500);
+            let result = null;
+
+            while (!result) {
+                let n =  Math.floor(Math.random() * 250)
+                if (this.set.has(n)) continue
+                else this.set.add(result = n)
+            }
+
+            return result
         },
 
         randomStr() {
@@ -15,7 +27,7 @@ export default {
         },
 
         randomMail() {
-            return this.randomStr() + this.randomNumber() + "@mail.com";
+            return this.randomStr() + Math.floor(Math.random() * 100) + "@mail.com";
         },
 
         randomName() {
