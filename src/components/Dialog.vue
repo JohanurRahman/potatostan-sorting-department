@@ -15,7 +15,7 @@
           Enter a number of how many people you want to add to the list.
         </p>
         <input type="number" class="form-container__control" :class="{ 'input-error': validationError.show }"
-            v-model="userCount" @keyup="validationError = validateInput($event.target.value)"/>
+            v-model="userCount" />
 
         <p v-if="validationError.show" class="error-message">
           {{ validationError.message }}
@@ -65,8 +65,8 @@ export default {
   },
   methods: {
     submit() {
-      if (this.userCount === null || this.userCount === "") {
-        this.validationError = this.constructValidationObj(true, "This field is required");
+      this.validationError = this.validateInput(this.userCount);
+      if (this.validationError.show) {
         return;
       }
       this.$emit("userCount", this.userCount);
