@@ -82,9 +82,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-@import "../scss/button";
-@import "../scss/dialog";
-@import "../scss/form";
-</style>
