@@ -1,6 +1,7 @@
 <template>
   <div id="home" class="home-container">
-    <div class="d-flex justify-end mb-9">
+    <div class="d-flex justify-space-between mb-9">
+      <h1>Sorting Training System</h1>
       <v-btn class="button-sorting" v-ripple="false" @click.stop="showDialog = true">
         Start Sorting!
       </v-btn>
