@@ -72,8 +72,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../scss/button';
-
 .home-container {
   max-width: 1140px;
   width: 100%;
