@@ -20,7 +20,7 @@ export default {
     value: Boolean,
     score: {
       default: 0,
-      required: false
+      required: true
     }
   },
   computed: {
@@ -29,7 +29,6 @@ export default {
         return this.value;
       },
       set(value) {
-        this.resetData();
         this.$emit("input", value);
       },
     },
