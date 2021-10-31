@@ -1,0 +1,25 @@
+.theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr:last-child > th {
+  border-bottom: 1px solid #ddd;
+  border-top: thin solid #ddd;
+}
+
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > th,
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+// Font color of table headers and cells
+.theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  color: #555;
+}
+.theme--light.v-data-table {
+  color: #000;
+}
+
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th:first-child,
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > td:first-child {
+  width: 45%;
+  border-right: solid 1px #ddd;
+}
